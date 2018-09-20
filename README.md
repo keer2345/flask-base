@@ -9,6 +9,26 @@
 ![flask-base](readme-media/logo.png)
 
 # The Simplest Flask App
+
+`hello.py`:
+```python
+from flask import Flask
+
+app = Flask(__name__)
+
+
+@app.route("/")
+def hello():
+    return "hello flask"
+
+
+def main():
+    app.run(debug=True, host='0.0.0.0')
+
+
+if __name__ == '__main__':
+    main()
+```
 ```
 python hello.py
 ```
