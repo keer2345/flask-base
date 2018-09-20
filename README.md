@@ -22,12 +22,8 @@ def hello():
     return "hello flask"
 
 
-def main():
-    app.run(debug=True, host='0.0.0.0')
-
-
 if __name__ == '__main__':
-    main()
+    app.run(debug=True, host='0.0.0.0')
 ```
 ```
 python hello.py
