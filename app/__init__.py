@@ -34,7 +34,7 @@ def create_app(config_enviroment):
     from app.main import main_bp
     app.register_blueprint(main_bp)
 
-    # from app.account import account_bp
-    # app.register_blueprint(account_bp, url_prefix='/account')
+    from app.account import account_bp
+    app.register_blueprint(account_bp, url_prefix='/account')
 
     return app

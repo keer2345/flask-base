@@ -1,0 +1,34 @@
+{# This macro is called on the user dashboards. In this case the administrator dashboard
+   at the route admin.index
+#}
+
+{% macro account_item(current_user) %}
+    {% if current_user.is_authenticated %}
+        {% set endpoints = [
+
+        ]%}
+    {% else %}
+        {% set endpoints =[
+
+        ]%}
+    {% endif %}
+{% endmacro %}
+
+{% macro mobile_nav(current_user,dropdown=None) %}
+    <div>
+        <div>
+            <a><i></i></a>
+        </div>
+
+        {# The menu items which will be shown when open-nav is clicked #}
+        <div>
+            
+        </div>
+    </div>
+{% endmacro %}
+
+{% macro render_nav(current_user,dropdown=[]) %}
+    <nav>
+        {{ mobile_nav(current_user,dropdown=dropdown)}}
+    </nav>
+{% endmacro %}
