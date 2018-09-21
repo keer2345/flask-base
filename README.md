@@ -38,3 +38,9 @@ python hello.py
 - Emailing (with a redis queue)
 
 ## Develop setup
+Database:
+```
+python manager_script.py init db
+python manager_script.py init migrate
+python manager_script.py init upgrade
+```
