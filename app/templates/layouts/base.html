@@ -32,10 +32,17 @@
           {{ nav.render_nav(current_user) }}
         {% endblock %}
 
+        {% include 'partials/_flashes.html' %}
+        {# When extended, the content block contains all the html of the webpage #}
+        {%block content%}
+        {%endblock%}
 
+        {# Implement CSRF protection for site #}
+        {% if csrf_token()|safe %}
+            <div style="visibility: hidden; display: none">
+              <input type="hidden" name="csrf_token" value="{{ csrf_token()|safe }}">
+            </div>
+        {% endif %}
 
-{%block content%}
-{%endblock%}
-
-</body>
+    </body>
 </html>

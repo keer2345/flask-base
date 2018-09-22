@@ -2,15 +2,34 @@
    at the route admin.index
 #}
 
-{% macro account_item(current_user) %}
+{% macro render_menu_items(endpoints)%}
+    {% for endpoint, name, icon in endpoints %}
+        <a href="{{ url_for(endpoint) }}">
+            {% if icon %}
+                <i class="{{icon}} icon"></i>
+            {% endif %}
+            {{ name | safe }}
+        </a>
+    {% endfor %}
+{% endmacro %}
+
+{# This is called for all users (including anonymous users). It renders the basic left side of the 
+   navigation bar. In the default case, the left hand side will read 'Flask-Base'. In the logged in
+   admin case, there will also be an item that links to admin/ route. I have added an example use of
+   render_menu_items.
+#}
+
+
+{% macro account_items(current_user) %}
     {% if current_user.is_authenticated %}
         {% set endpoints = [
 
         ]%}
     {% else %}
         {% set endpoints =[
-
+        ('account.login', 'Log In', 'sign in')
         ]%}
+        {{ render_menu_items(endpoints) }}
     {% endif %}
 {% endmacro %}
 
@@ -22,7 +41,7 @@
 
         {# The menu items which will be shown when open-nav is clicked #}
         <div>
-            
+            {{ account_items(current_user) }}            
         </div>
     </div>
 {% endmacro %}
