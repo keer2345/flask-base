@@ -5,3 +5,5 @@ module (as opposed to just their python files)
 
 from .role import *  # noqa
 from .user import *  # noqa
+from .miscellaneous import *  # noqa
+
